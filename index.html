@@ -62,6 +62,14 @@ html{scroll-behavior:smooth}
 .bonus-click{cursor:pointer;transition:transform .15s}
 .bonus-click:active{transform:scale(.98)}
 .ver-dentro{align-self:flex-start;margin-top:4px;border:0;background:#1E5B3F;color:#fff;font:800 13px 'Nunito Sans',system-ui,sans-serif;padding:8px 12px;border-radius:999px;cursor:pointer;min-height:36px;display:inline-flex;align-items:center;gap:4px}
+.contador{display:flex;flex-direction:column;align-items:center;gap:8px}
+.cd-titulo{font-size:13px;font-weight:800;color:#1E5B3F;text-transform:uppercase;letter-spacing:.08em}
+.cd-linha{display:flex;gap:8px;justify-content:center}
+.cd-box{min-width:62px;background:#1E5B3F;color:#fff;border-radius:12px;padding:8px 6px 6px;display:flex;flex-direction:column;align-items:center;box-shadow:0 4px 0 #123826}
+.cd-num{font-family:'Bricolage Grotesque',system-ui,sans-serif;font-weight:800;font-size:28px;line-height:1;font-variant-numeric:tabular-nums}
+.cd-lab{font-size:11px;font-weight:700;color:#F2C14E;text-transform:uppercase;letter-spacing:.06em;margin-top:4px}
+.cd-box:first-child{background:#B8322A;box-shadow:0 4px 0 #7E1F19}
+.cd-box:first-child .cd-lab{color:#FFE7A3}
 .mockup-wrap{display:flex;justify-content:center;padding:8px 0 4px}
 .mockup{width:78%;max-width:340px;height:auto;filter:drop-shadow(0 18px 22px rgba(30,40,20,.28));animation:flutuar 3.2s ease-in-out infinite}
 @keyframes flutuar{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
@@ -210,6 +218,10 @@ Oferta especial de Natal · acesso imediato no celular
 
 <!-- CTA MEIO -->
 <section style="padding: 0 20px 44px; display: flex; flex-direction: column; gap: 14px">
+<div class="contador" id="contador-natal" role="timer" aria-live="off">
+<span class="cd-titulo">Faltam para o Natal</span>
+<div class="cd-linha"><div class="cd-box"><span class="cd-num" id="cd-d">--</span><span class="cd-lab">dias</span></div><div class="cd-box"><span class="cd-num" id="cd-h">--</span><span class="cd-lab">horas</span></div><div class="cd-box"><span class="cd-num" id="cd-m">--</span><span class="cd-lab">min</span></div><div class="cd-box"><span class="cd-num" id="cd-s">--</span><span class="cd-lab">seg</span></div></div>
+</div>
 <p style="margin: 0; text-align: center; font-size: 17px; font-weight: 800; color: #B8322A">Monte a lista agora e compre antes da alta de dezembro.</p>
 <a class="btn-shine" href="#planos" style="display: block; text-align: center; background: #B8322A; color: #FFFFFF; text-decoration: none; font-weight: 800; font-size: 18px; padding: 18px 20px; border-radius: 14px; box-shadow: 0 6px 0 #7E1F19">Quero montar a minha ceia</a>
 </section>
@@ -287,7 +299,7 @@ Oferta especial de Natal · acesso imediato no celular
 <div style="display: flex; gap: 10px; align-items: flex-start"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1E5B3F" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0; margin-top: 2px"><path d="M20 6L9 17l-5-5"></path></svg><span style="font-size: 16px">E-book <strong>Ceia Econômica de Natal</strong></span></div>
 </div>
 <div style="display: flex; flex-direction: column; align-items: center; gap: 2px; padding-top: 4px">
-<span style="font-size: 14px; color: #5C5C5C">por apenas</span>
+<span style="font-size: 14px; color: #5C5C5C">Valor promocional de</span>
 <span style="font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-weight: 800; font-size: 40px; color: #2B2B2B; line-height: 1.1">R$ 19,90</span>
 </div>
 <a href="https://pay.wiapy.com/X79lQo-CNcrL" id="abrir-oferta" style="display: block; text-align: center; background: #FFFFFF; color: #1E5B3F; border: 2px solid #1E5B3F; text-decoration: none; font-weight: 800; font-size: 17px; padding: 15px 20px; border-radius: 14px">Quero o plano Essencial</a>
@@ -491,6 +503,21 @@ document.addEventListener('keydown',function(e){if(!fundo.hidden&&e.key==='Escap
   function fecharZoom(){zoom.hidden=true;}
   zoom.addEventListener('click',fecharZoom);
   document.addEventListener('keydown',function(e){if(e.key==='Escape'){if(!zoom.hidden)fecharZoom();else fechar();}});
+})();
+</script>
+<script>
+(function(){
+  var el=document.getElementById('contador-natal'); if(!el) return;
+  var d=document.getElementById('cd-d'),h=document.getElementById('cd-h'),m=document.getElementById('cd-m'),s=document.getElementById('cd-s');
+  function alvo(){var n=new Date(),y=n.getFullYear();var t=new Date(y,11,25,0,0,0);if(n>=new Date(y,11,26))t=new Date(y+1,11,25);return t;}
+  function dois(x){return (x<10?'0':'')+x;}
+  function tick(){
+    var n=new Date(),t=alvo(),r=t-n;
+    if(r<=0){el.querySelector('.cd-titulo').textContent='Feliz Natal!';d.textContent=h.textContent=m.textContent=s.textContent='00';return;}
+    var sec=Math.floor(r/1000);
+    d.textContent=Math.floor(sec/86400);h.textContent=dois(Math.floor(sec%86400/3600));m.textContent=dois(Math.floor(sec%3600/60));s.textContent=dois(sec%60);
+  }
+  tick(); setInterval(tick,1000);
 })();
 </script>
 <!-- Rastreamento de cliques nos botões de compra -->

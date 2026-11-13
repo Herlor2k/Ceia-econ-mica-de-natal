@@ -70,6 +70,13 @@ html{scroll-behavior:smooth}
 .cd-lab{font-size:11px;font-weight:700;color:#F2C14E;text-transform:uppercase;letter-spacing:.06em;margin-top:4px}
 .cd-box:first-child{background:#B8322A;box-shadow:0 4px 0 #7E1F19}
 .cd-box:first-child .cd-lab{color:#FFE7A3}
+.rec-grade{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.rec{background:#FFF9F0;border:1px solid #EADFCB;border-radius:16px;overflow:hidden;display:flex;flex-direction:column}
+.rec img{width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;display:block}
+.rec-info{padding:10px 12px 12px;display:flex;flex-direction:column;gap:2px}
+.rec-info strong{font-size:14px;line-height:1.25;color:#1E3A2B}
+.rec-info span{font-size:12px;font-weight:700;color:#B8322A}
+.barra-promo{position:sticky;top:0;z-index:60;background:#1E5B3F;color:#fff;text-align:center;padding:10px 8px;font-family:'Bricolage Grotesque',system-ui,sans-serif;font-weight:800;font-size:clamp(12px,3.3vw,15px);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;line-height:1.3;box-shadow:0 2px 8px rgba(0,0,0,.18)}
 .mockup-wrap{display:flex;justify-content:center;padding:8px 0 4px}
 .mockup{width:78%;max-width:340px;height:auto;filter:drop-shadow(0 18px 22px rgba(30,40,20,.28));animation:flutuar 3.2s ease-in-out infinite}
 @keyframes flutuar{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
@@ -115,12 +122,9 @@ fbq('track', 'ViewContent', {content_name: 'Ceia Econômica de Natal', content_t
 <body>
 
 <div style="width: 100%; background: #FFF9F0; font-family: 'Nunito Sans', system-ui, sans-serif; color: #2B2B2B; line-height: 1.5">
+<div class="barra-promo" role="note">⏰ A promoção dessa página acaba no dia 01/12/2026</div>
 <div style="max-width: 480px; margin: 0 auto; display: flex; flex-direction: column">
 
-<!-- Faixa topo -->
-<div style="background: #1E5B3F; color: #FFFFFF; text-align: center; padding: 10px 16px; font-size: 13px; font-weight: 700; letter-spacing: 0.02em">
-Oferta especial de Natal · acesso imediato no celular
-</div>
 
 <!-- HERO -->
 <section style="padding: 20px 20px 36px; display: flex; flex-direction: column; gap: 20px">
@@ -206,6 +210,38 @@ Oferta especial de Natal · acesso imediato no celular
 <div style="font-size: 14px; color: #5C5C5C">O que fazer antes e no dia, sem correria.</div>
 </div>
 </div>
+</section>
+
+<!-- O QUE VOCÊ VAI PREPARAR -->
+<section style="background: #FFFFFF; padding: 44px 20px; display: flex; flex-direction: column; gap: 20px">
+<h2 style="margin: 0; font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-weight: 800; font-size: 26px; line-height: 1.15; color: #1E5B3F; text-align: center">O que você vai preparar</h2>
+<div class="rec-grade">
+<div class="rec">
+<img src="img/ce-frango-assado.webp" width="480" height="360" alt="Frango assado especial de Natal pronto" loading="lazy">
+<div class="rec-info"><strong>Frango assado especial de Natal</strong><span>Página 43</span></div>
+</div>
+<div class="rec">
+<img src="img/ce-pernil.webp" width="480" height="360" alt="Pernil suíno assado pronto" loading="lazy">
+<div class="rec-info"><strong>Pernil suíno assado</strong><span>Página 47</span></div>
+</div>
+<div class="rec">
+<img src="img/ce-arroz-natalino.webp" width="480" height="360" alt="Arroz natalino colorido pronto" loading="lazy">
+<div class="rec-info"><strong>Arroz natalino colorido</strong><span>Página 29</span></div>
+</div>
+<div class="rec">
+<img src="img/ce-farofa-crocante.webp" width="480" height="360" alt="Farofa crocante especial pronto" loading="lazy">
+<div class="rec-info"><strong>Farofa crocante especial</strong><span>Página 32</span></div>
+</div>
+<div class="rec">
+<img src="img/ce-salpicao.webp" width="480" height="360" alt="Salpicão de frango econômico pronto" loading="lazy">
+<div class="rec-info"><strong>Salpicão de frango econômico</strong><span>Página 33</span></div>
+</div>
+<div class="rec">
+<img src="img/ce-pave-chocolate.webp" width="480" height="360" alt="Pavê de chocolate pronto" loading="lazy">
+<div class="rec-info"><strong>Pavê de chocolate</strong><span>Página 59</span></div>
+</div>
+</div>
+<p style="margin: 0; text-align: center; font-size: 14px; color: #5C5C5C">E muitas outras receitas de acompanhamentos, pratos principais e sobremesas.</p>
 </section>
 
 <!-- PÁGINAS DO PRODUTO -->

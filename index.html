@@ -89,23 +89,19 @@ html{scroll-behavior:smooth}
 .hv-nota{margin:-6px 0 0;font-size:13px;font-weight:600;color:#D7E6DC}
 .leitor{position:fixed;inset:0;z-index:10003;background:#141414;display:flex;flex-direction:column;color:#fff;font-family:'Nunito Sans',system-ui,sans-serif}
 .leitor[hidden]{display:none}
-.lt-barra{display:flex;align-items:center;gap:6px;padding:6px 6px 6px 16px;flex-shrink:0}
+.lt-barra{display:flex;align-items:center;gap:6px;padding:6px 6px 6px 16px;flex-shrink:0;box-shadow:0 2px 8px rgba(0,0,0,.4)}
 .lt-cont{flex:1;font-weight:800;font-size:15px;font-variant-numeric:tabular-nums}
-.lt-barra button,.lt-nav{width:46px;height:46px;border:0;border-radius:50%;background:rgba(255,255,255,.12);color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer}
+.lt-barra button{width:46px;height:46px;border:0;border-radius:50%;background:rgba(255,255,255,.12);color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer}
 .lt-zoom[aria-pressed="true"]{background:#F2C14E;color:#2B1D00}
-.lt-trilho{flex:1;min-height:0;display:flex;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;overscroll-behavior:contain;scrollbar-width:none}
-.lt-trilho::-webkit-scrollbar{display:none}
-.lt-trilho.travado{overflow-x:hidden;scroll-snap-type:none}
-.lt-pg{flex:0 0 100%;width:100%;height:100%;scroll-snap-align:center;scroll-snap-stop:always;display:flex;align-items:center;justify-content:center;padding:4px 8px;box-sizing:border-box;overflow:hidden}
-.lt-pg img{max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;border-radius:4px;background:#2a2a2a;user-select:none;-webkit-user-select:none}
-.lt-pg.zoom{display:block;overflow:auto;padding:0;touch-action:pan-x pan-y pinch-zoom}
-.lt-pg.zoom img{max-width:none;max-height:none;width:230%;border-radius:0}
-.lt-nav{position:absolute;top:50%;transform:translateY(-50%);background:rgba(0,0,0,.45)}
-.lt-ant{left:6px}.lt-prox{right:6px}
-.lt-nav:disabled{opacity:0;pointer-events:none}
+.lt-trilho{position:relative;flex:1;min-height:0;overflow-y:auto;overflow-x:hidden;overscroll-behavior:contain;padding:10px 0 28px;-webkit-overflow-scrolling:touch}
+.lt-trilho.zoom{overflow-x:auto}
+.lt-pg{display:flex;justify-content:center;padding:0 8px 10px}
+.lt-pg img{display:block;width:100%;max-width:760px;height:auto;border-radius:4px;background:#2a2a2a;user-select:none;-webkit-user-select:none}
+.lt-trilho.zoom .lt-pg{width:max-content;justify-content:flex-start}
+.lt-trilho.zoom .lt-pg img{width:calc(min(100vw - 16px, 760px) * 2.3);max-width:none;border-radius:0}
 .lt-dica{margin:0;padding:8px 12px 12px;text-align:center;font-size:12px;color:#BDBDBD;flex-shrink:0}
-.lt-pg-fim{overflow-y:auto;align-items:safe center}
-.lt-fim{width:min(100%,420px);background:#FFF9F0;color:#2B2B2B;border-radius:16px;padding:26px 20px;display:flex;flex-direction:column;gap:12px;text-align:center;margin:auto}
+.lt-pg-fim{padding:6px 8px 10px}
+.lt-fim{width:min(100%,420px);background:#FFF9F0;color:#2B2B2B;border-radius:16px;padding:26px 20px;display:flex;flex-direction:column;gap:12px;text-align:center;box-sizing:border-box}
 .lt-fim-selo{align-self:center;background:#1E5B3F;color:#F2C14E;font-size:11px;font-weight:800;padding:4px 12px;border-radius:999px;text-transform:uppercase;letter-spacing:.08em}
 .lt-fim h2{margin:0;font-family:'Bricolage Grotesque',system-ui,sans-serif;font-weight:800;font-size:26px;line-height:1.15;color:#1E5B3F}
 .lt-fim p{margin:0;font-size:15px;color:#4A4A4A;line-height:1.5}
@@ -165,7 +161,7 @@ details[open] .faq-plus{transform:rotate(45deg)}
   ['pointerdown','touchstart','scroll','keydown'].forEach(function(t){w.addEventListener(t,w.carregarRastreio,{once:true,passive:true})});
 })(window,document);
 </script>
-<script src="js/app.cc12462f.js" defer></script>
+<script src="js/app.8543faea.js" defer></script>
 </head>
 <body>
 <noscript><img height="1" width="1" style="display:none" alt="" src="https://www.facebook.com/tr?id=1122892143970982&amp;ev=PageView&amp;noscript=1"></noscript>
@@ -182,7 +178,7 @@ details[open] .faq-plus{transform:rotate(45deg)}
 <picture><source type="image/webp" srcset="img/mockup-260.98c4b86b.webp 260w, img/mockup-400.5b235085.webp 400w, img/mockup-520.18bb934b.webp 520w, img/mockup-680.3177954a.webp 680w" sizes="(max-width: 480px) 150px, 340px"><img class="mockup" src="img/mockup-400.ae4a386f.png" width="680" height="906" alt="E-book Ceia Econômica de Natal" fetchpriority="high" decoding="sync"></picture>
 </div>
 <button type="button" class="btn-leitor" data-leitor><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 4h6a4 4 0 0 1 4 4v13a3 3 0 0 0-3-3H2z"/><path d="M22 4h-6a4 4 0 0 0-4 4v13a3 3 0 0 1 3-3h7z"/></svg>Leia o guia</button>
-<p class="hv-nota">Amostra grátis com 19 páginas. Abre aqui mesmo.</p>
+<p class="hv-nota">Amostra grátis com 20 páginas. Abre aqui mesmo.</p>
 </section>
 
 <!-- HERO -->
@@ -500,22 +496,20 @@ details[open] .faq-plus{transform:rotate(45deg)}
 <!-- LEITOR DA AMOSTRA -->
 <div class="leitor" id="leitor" role="dialog" aria-modal="true" aria-label="Amostra do guia Ceia Econômica de Natal" hidden>
 <div class="lt-barra">
-<span class="lt-cont" aria-live="polite">1 / 20</span>
+<span class="lt-cont" aria-live="polite">1 / 21</span>
 <button type="button" class="lt-zoom" aria-label="Ampliar página" aria-pressed="false"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3M11 8v6M8 11h6"/></svg></button>
 <button type="button" class="lt-fechar" aria-label="Fechar amostra"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
 </div>
-<div class="lt-trilho"><div class="lt-pg"><img src="img/amostra-01.b0e6221e.webp" width="1000" height="1333" alt="Página 1 da amostra do guia Ceia Econômica de Natal" loading="lazy" decoding="async" draggable="false"></div><div class="lt-pg"><img src="img/amostra-02.80e9916c.webp" width="1000" height="1413" alt="Página 2 da amostra do guia Ceia Econômica de Natal" loading="lazy" decoding="async" draggable="false"></div><div class="lt-pg"><img src="img/amostra-03.004eb2fe.webp" width="1000" height="1416" alt="Página 3 da amostra do guia Ceia Econômica de Natal" loading="lazy" decoding="async" draggable="false"></div><div class="lt-pg"><img src="img/amostra-04.942ced8d.webp" width="1000" height="1413" alt="Página 4 da amostra do guia Ceia Econômica de Natal" loading="lazy" decoding="async" draggable="false"></div><div class="lt-pg"><img src="img/amostra-05.7413651f.webp" width="1000" height="1413" alt="Página 5 da amostra do guia Ceia Econômica de Natal" loading="lazy" decoding="async" draggable="false"></div><div class="lt-pg"><img src="img/amostra-06.5f5d4058.webp" width="1000" height="1413" alt="Página 6 da amostra do guia Ceia Econômica de Natal" loading="lazy" decoding="async" draggable="false"></div><div class="lt-pg"><img src="img/amostra-07.28c36c51.webp" width="1000" height="1413" alt="Página 7 da amostra do guia Ceia Econômica de Natal" loading="lazy" decoding="async" draggable="false"></div><div class="lt-pg"><img src="img/amostra-08.848e2073.webp" width="1000" height="1413" alt="Página 8 da amostra do guia Ceia Econômica de Natal" loading="lazy" decoding="async" draggable="false"></div><div class="lt-pg"><img src="img/amostra-09.8f4a4cf3.webp" width="1000" height="1413" alt="Página 9 da amostra do guia Ceia Econômica de Natal" loading="lazy" decoding="async" draggable="false"></div><div class="lt-pg"><img src="img/amostra-10.751267b7.webp" width="1000" height="1416" alt="Página 10 da amostra do guia Ceia Econômica de Natal" loading="lazy" decoding="async" draggable="false"></div><div class="lt-pg"><img src="img/amostra-11.06eb04d7.webp" width="1000" height="1413" alt="Página 11 da amostra do guia Ceia Econômica de Natal" loading="lazy" decoding="async" draggable="false"></div><div class="lt-pg"><img src="img/amostra-12.83e3d7f0.webp" width="1000" height="1413" alt="Página 12 da amostra do guia Ceia Econômica de Natal" loading="lazy" decoding="async" draggable="false"></div><div class="lt-pg"><img src="img/amostra-13.b9461d86.webp" width="1000" height="1413" alt="Página 13 da amostra do guia Ceia Econômica de Natal" loading="lazy" decoding="async" draggable="false"></div><div class="lt-pg"><img src="img/amostra-14.2cb9d2fc.webp" width="1000" height="1413" alt="Página 14 da amostra do guia Ceia Econômica de Natal" loading="lazy" decoding="async" draggable="false"></div><div class="lt-pg"><img src="img/amostra-15.8b12392d.webp" width="1000" height="1413" alt="Página 15 da amostra do guia Ceia Econômica de Natal" loading="lazy" decoding="async" draggable="false"></div><div class="lt-pg"><img src="img/amostra-16.6b7defa6.webp" width="1000" height="1413" alt="Página 16 da amostra do guia Ceia Econômica de Natal" loading="lazy" decoding="async" draggable="false"></div><div class="lt-pg"><img src="img/amostra-17.d410c12b.webp" width="1000" height="1416" alt="Página 17 da amostra do guia Ceia Econômica de Natal" loading="lazy" decoding="async" draggable="false"></div><div class="lt-pg"><img src="img/amostra-18.911a6b03.webp" width="1000" height="1413" alt="Página 18 da amostra do guia Ceia Econômica de Natal" loading="lazy" decoding="async" draggable="false"></div><div class="lt-pg"><img src="img/amostra-19.c2b675ff.webp" width="1000" height="1413" alt="Página 19 da amostra do guia Ceia Econômica de Natal" loading="lazy" decoding="async" draggable="false"></div><div class="lt-pg lt-pg-fim"><div class="lt-fim">
+<div class="lt-trilho"><div class="lt-pg"><img src="img/amostra-01.b0e6221e.webp" width="1000" height="1333" alt="Página 1 da amostra do guia Ceia Econômica de Natal" loading="lazy" decoding="async" draggable="false"></div><div class="lt-pg"><img src="img/amostra-02.80e9916c.webp" width="1000" height="1413" alt="Página 2 da amostra do guia Ceia Econômica de Natal" loading="lazy" decoding="async" draggable="false"></div><div class="lt-pg"><img src="img/amostra-03.004eb2fe.webp" width="1000" height="1416" alt="Página 3 da amostra do guia Ceia Econômica de Natal" loading="lazy" decoding="async" draggable="false"></div><div class="lt-pg"><img src="img/amostra-04.942ced8d.webp" width="1000" height="1413" alt="Página 4 da amostra do guia Ceia Econômica de Natal" loading="lazy" decoding="async" draggable="false"></div><div class="lt-pg"><img src="img/amostra-05.7413651f.webp" width="1000" height="1413" alt="Página 5 da amostra do guia Ceia Econômica de Natal" loading="lazy" decoding="async" draggable="false"></div><div class="lt-pg"><img src="img/amostra-06.5f5d4058.webp" width="1000" height="1413" alt="Página 6 da amostra do guia Ceia Econômica de Natal" loading="lazy" decoding="async" draggable="false"></div><div class="lt-pg"><img src="img/amostra-07.28c36c51.webp" width="1000" height="1413" alt="Página 7 da amostra do guia Ceia Econômica de Natal" loading="lazy" decoding="async" draggable="false"></div><div class="lt-pg"><img src="img/amostra-08.848e2073.webp" width="1000" height="1413" alt="Página 8 da amostra do guia Ceia Econômica de Natal" loading="lazy" decoding="async" draggable="false"></div><div class="lt-pg"><img src="img/amostra-09.8f4a4cf3.webp" width="1000" height="1413" alt="Página 9 da amostra do guia Ceia Econômica de Natal" loading="lazy" decoding="async" draggable="false"></div><div class="lt-pg"><img src="img/amostra-10.751267b7.webp" width="1000" height="1416" alt="Página 10 da amostra do guia Ceia Econômica de Natal" loading="lazy" decoding="async" draggable="false"></div><div class="lt-pg"><img src="img/amostra-11.06eb04d7.webp" width="1000" height="1413" alt="Página 11 da amostra do guia Ceia Econômica de Natal" loading="lazy" decoding="async" draggable="false"></div><div class="lt-pg"><img src="img/amostra-12.83e3d7f0.webp" width="1000" height="1413" alt="Página 12 da amostra do guia Ceia Econômica de Natal" loading="lazy" decoding="async" draggable="false"></div><div class="lt-pg"><img src="img/amostra-13.b9461d86.webp" width="1000" height="1413" alt="Página 13 da amostra do guia Ceia Econômica de Natal" loading="lazy" decoding="async" draggable="false"></div><div class="lt-pg"><img src="img/amostra-14.2cb9d2fc.webp" width="1000" height="1413" alt="Página 14 da amostra do guia Ceia Econômica de Natal" loading="lazy" decoding="async" draggable="false"></div><div class="lt-pg"><img src="img/amostra-15.8b12392d.webp" width="1000" height="1413" alt="Página 15 da amostra do guia Ceia Econômica de Natal" loading="lazy" decoding="async" draggable="false"></div><div class="lt-pg"><img src="img/amostra-16.6b7defa6.webp" width="1000" height="1413" alt="Página 16 da amostra do guia Ceia Econômica de Natal" loading="lazy" decoding="async" draggable="false"></div><div class="lt-pg"><img src="img/amostra-17.d410c12b.webp" width="1000" height="1416" alt="Página 17 da amostra do guia Ceia Econômica de Natal" loading="lazy" decoding="async" draggable="false"></div><div class="lt-pg"><img src="img/amostra-18.911a6b03.webp" width="1000" height="1413" alt="Página 18 da amostra do guia Ceia Econômica de Natal" loading="lazy" decoding="async" draggable="false"></div><div class="lt-pg"><img src="img/amostra-19.c2b675ff.webp" width="1000" height="1413" alt="Página 19 da amostra do guia Ceia Econômica de Natal" loading="lazy" decoding="async" draggable="false"></div><div class="lt-pg"><img src="img/amostra-20.f89a7846.webp" width="1000" height="1413" alt="Página 20 da amostra do guia Ceia Econômica de Natal" loading="lazy" decoding="async" draggable="false"></div><div class="lt-pg lt-pg-fim"><div class="lt-fim">
 <span class="lt-fim-selo">Fim da amostra</span>
 <h2>Gostou do que viu?</h2>
-<p>Você leu 19 das 80 páginas do guia. No guia completo você recebe as <strong>37 receitas</strong>, os cardápios por orçamento com listas de compras, o cronograma da ceia e o kit de organização.</p>
+<p>Você leu 20 das 80 páginas do guia. No guia completo você recebe as <strong>37 receitas</strong>, os cardápios por orçamento com listas de compras, o cronograma da ceia e o kit de organização.</p>
 <a href="https://pay.wiapy.com/X79lQo-CNcrL" class="btn-shine lt-btn lt-btn-1">Quero o guia completo<small>R$ 19,90 · pagamento único</small></a>
 <span class="lt-ou">ou leve tudo com os bônus de Natal</span>
 <a href="https://pay.wiapy.com/6aebb363605b6cd0b4100cb9" class="lt-btn lt-btn-2">Quero o Plano Completo<small>R$ 47,90 · guia + 27 pratos principais + 34 sobremesas + 24 acompanhamentos + 3 bônus de doces</small></a>
 <span class="lt-gar">15 dias de garantia</span>
 </div></div></div>
-<button type="button" class="lt-nav lt-ant" aria-label="Página anterior"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg></button>
-<button type="button" class="lt-nav lt-prox" aria-label="Próxima página"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></button>
-<p class="lt-dica">Deslize para passar as páginas · toque duas vezes para ampliar</p>
+<p class="lt-dica">Role para baixo para ler · toque duas vezes para ampliar</p>
 </div>
 
 <!-- POP-UPS DOS BÔNUS -->

@@ -6,6 +6,8 @@
 <link rel="preload" as="image" type="image/webp" imagesrcset="img/mockup-260.98c4b86b.webp 260w, img/mockup-400.5b235085.webp 400w, img/mockup-520.18bb934b.webp 520w, img/mockup-680.3177954a.webp 680w" imagesizes="(max-width: 480px) 150px, 340px" fetchpriority="high">
 <link rel="preload" as="font" type="font/woff2" href="fonts/bricolage-grotesque-800.5beb2f65.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="fonts/nunito-sans-variavel.e010923d.woff2" crossorigin>
+<link rel="preconnect" href="https://pay.wiapy.com">
+<link rel="dns-prefetch" href="https://pay.wiapy.com">
 <title>Ceia Econômica de Natal</title>
 <style>
 @font-face{font-family:'Bricolage Grotesque';font-style:normal;font-weight:800;font-display:swap;src:url(fonts/bricolage-grotesque-800.5beb2f65.woff2) format('woff2')}
@@ -112,6 +114,16 @@ html{scroll-behavior:smooth}
 .lt-btn-2 small{color:#F2C14E}
 .lt-ou{font-size:13px;font-weight:700;color:#5C5C5C}
 .lt-gar{font-size:13px;font-weight:700;color:#1E5B3F}
+a,button{-webkit-tap-highlight-color:transparent}
+a.indo{pointer-events:none;position:relative;color:transparent!important}
+a.indo>*{visibility:hidden}
+a.indo::before{content:"Abrindo o checkout…";position:absolute;inset:0;display:flex;align-items:center;justify-content:center;gap:10px;color:#fff;font-weight:800;font-size:16px;visibility:visible;padding-left:28px;background:inherit;border-radius:inherit;z-index:2}
+a.indo::after{content:"";position:absolute;left:calc(50% - 98px);top:calc(50% - 10px);width:20px;height:20px;border:3px solid rgba(255,255,255,.45);border-top-color:#fff;border-radius:50%;animation:girar .7s linear infinite;z-index:3;visibility:visible;background:none!important;transform:none!important}
+a.selo-completo.indo::before{content:"Abrindo…";font-size:12px;padding-left:22px;color:#3D2A00}
+a.selo-completo.indo::after{left:calc(50% - 44px);top:calc(50% - 7px);width:12px;height:12px;border-width:2px;border-color:rgba(61,42,0,.35);border-top-color:#3D2A00}
+a.oferta-nao.indo::before{color:#4A4A4A;font-size:15px}
+a.oferta-nao.indo::after{border-color:rgba(74,74,74,.3);border-top-color:#4A4A4A}
+@keyframes girar{to{transform:rotate(360deg)}}
 .mockup-wrap{display:flex;justify-content:center;padding:8px 0 4px}
 .mockup{width:78%;max-width:340px;height:auto;filter:drop-shadow(0 18px 22px rgba(30,40,20,.28));animation:flutuar 3.2s ease-in-out infinite}
 @keyframes flutuar{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
@@ -161,7 +173,7 @@ details[open] .faq-plus{transform:rotate(45deg)}
   ['pointerdown','touchstart','scroll','keydown'].forEach(function(t){w.addEventListener(t,w.carregarRastreio,{once:true,passive:true})});
 })(window,document);
 </script>
-<script src="js/app.8543faea.js" defer></script>
+<script src="js/app.1bd90462.js" defer></script>
 </head>
 <body>
 <noscript><img height="1" width="1" style="display:none" alt="" src="https://www.facebook.com/tr?id=1122892143970982&amp;ev=PageView&amp;noscript=1"></noscript>

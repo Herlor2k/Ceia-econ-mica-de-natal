@@ -59,6 +59,8 @@ document.addEventListener('keydown',function(e){if(!fundo.hidden&&e.key==='Escap
     'https://pay.wiapy.com/6aebb460639b7ecda68b6876':{plano:'Completo oferta pop-up',valor:37.00},
     'https://pay.wiapy.com/X79lQo-CNcrL':{plano:'Essencial',valor:19.90}
   };
+  // Ao voltar do checkout pelo botão "voltar", os botões voltam ao normal
+  window.addEventListener('pageshow',function(){document.querySelectorAll('a.indo').forEach(function(x){x.classList.remove('indo');x.removeAttribute('aria-busy');});});
   document.querySelectorAll('a[href*="wiapy"]').forEach(function(a){
     a.addEventListener('click',function(e){
       // O botão "Quero o plano Essencial" da página abre o pop-up; não é ida ao checkout
@@ -70,15 +72,17 @@ document.addEventListener('keydown',function(e){if(!fundo.hidden&&e.key==='Escap
       var info=planos[a.href]||{plano:'Desconhecido',valor:0};
       if(window.fbq) fbq('trackCustom','CliqueComprar',{plano:info.plano,value:info.valor,currency:'BRL'});
       if(window.clarity) clarity('event','CliqueComprar '+info.plano);
-      // Espera um instante para o evento ser enviado antes de sair da página
       if(e.ctrlKey||e.metaKey||e.shiftKey||e.button!==0) return;
       e.preventDefault();
+      if(a.classList.contains('indo')) return;
+      // Mostra na hora que o clique funcionou
+      a.classList.add('indo');a.setAttribute('aria-busy','true');
       var destino=a.href,inicio=Date.now();
       if(window.carregarRastreio) window.carregarRastreio();
       (function ir(){
-        // espera o Pixel carregar (no máximo 1,5 s) e mais 0,3 s para o evento ser enviado
-        if(window.__pixelPronto||Date.now()-inicio>1500){setTimeout(function(){window.location.href=destino;},300);}
-        else setTimeout(ir,100);
+        // Pixel já carregado: só 150 ms para o evento sair. Se ainda não carregou, espera no máximo 0,8 s.
+        if(window.__pixelPronto||Date.now()-inicio>800){setTimeout(function(){window.location.href=destino;},150);}
+        else setTimeout(ir,50);
       })();
     });
   });
